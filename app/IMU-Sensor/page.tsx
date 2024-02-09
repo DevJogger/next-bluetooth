@@ -73,7 +73,7 @@ export default function ImuSensor() {
   }
   return (
     <main
-      className="flex flex-col gap-16 justify-center h-screen place-items-center bg-stone-950"
+      className="flex flex-col gap-8 justify-center h-screen place-items-center bg-stone-950"
     >
       <iframe ref={iframeRef} className="w-[1200px] h-[464px]" loading="lazy" src="/PlayMarioHTML5/index.html"></iframe>
       <h1
@@ -82,6 +82,9 @@ export default function ImuSensor() {
       >
         {isConnected ? "Disconnect" : "Connect"}
       </h1>
+      <h3>
+        X: {xAxis} Y: {yAxis} Z: {zAxis}
+      </h3>
     </main>
   )
 }
