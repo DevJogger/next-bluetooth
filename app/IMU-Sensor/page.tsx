@@ -3,7 +3,7 @@ import React, { useState, useRef, useMemo, useEffect } from "react"
 
 const SERVICE_UUID = "00001623-1212-efde-1623-785feabcd123"
 const CHARACTERISTIC_UUID = "00001624-1212-efde-1623-785feabcd123"
-const SUBSCRIBE_IMU_COMMAND = [10, 0, 65, 0, 0, 1, 0, 0, 0, 1]
+const SUBSCRIBE_IMU_COMMAND = [10, 0, 65, 0, 0, 5, 0, 0, 0, 1]
 
 export default function ImuSensor() {
   const [isConnected, setIsConnected] = useState(false)
@@ -16,8 +16,51 @@ export default function ImuSensor() {
   const zAxis = useMemo(() => xzy[1], [xzy])
 
   useEffect(() => {
-    iframeRef.current?.focus();
+    iframeRef.current?.focus()
   }, [])
+
+  // useEffect(() => {
+  //   const [xAxis, zAxis, yAxis] = xzy
+
+  //   const pressKey = (keyString: string) => {
+  //     const event = new KeyboardEvent("keydown", { key: keyString })
+  //     window.dispatchEvent(event)
+  //   }
+
+  //   const releaseKey = (keyString: string) => {
+  //     const event = new KeyboardEvent("keyup", { key: keyString })
+  //     window.dispatchEvent(event)
+  //   }
+
+  //   const checkAxis = () => {
+  //     if (yAxis > 200 && yAxis < 240) {
+  //       pressKey("ArrowRight")
+  //     } else {
+  //       releaseKey("ArrowRight")
+  //     }
+  //     if (yAxis < 50 && yAxis > 10) {
+  //       pressKey("ArrowLeft")
+  //     } else {
+  //       releaseKey("ArrowLeft")
+  //     }
+  //     if (zAxis > 200 && zAxis < 240) {
+  //       pressKey("ArrowUp")
+  //     } else {
+  //       releaseKey("ArrowUp")
+  //     }
+  //     if (xAxis > 200 && xAxis < 240) {
+  //       pressKey("Spacebar")
+  //     } else {
+  //       releaseKey("Spacebar")
+  //     }
+  //   }
+
+  //   const intervalId = setInterval(checkAxis, 10) // Check every 10ms
+
+  //   return () => {
+  //     clearInterval(intervalId)
+  //   }
+  // }, [xzy])
 
   const onDisconnected = (event: Event) => {
     setIsConnected(false)
@@ -72,10 +115,13 @@ export default function ImuSensor() {
     }
   }
   return (
-    <main
-      className="flex flex-col gap-8 justify-center h-screen place-items-center bg-stone-950"
-    >
-      <iframe ref={iframeRef} className="w-[1200px] h-[464px]" loading="lazy" src="/PlayMarioHTML5/index.html"></iframe>
+    <main className="flex h-screen flex-col items-center justify-center gap-4 bg-stone-950 pt-12">
+      <iframe
+        ref={iframeRef}
+        className="h-[503px] w-[1200px]"
+        loading="lazy"
+        src="/html-mario/index.html"
+      ></iframe>
       <h1
         className={`cursor-pointer rounded-full px-10 py-4 text-xl font-bold transition-all hover:-translate-y-1 ${isConnected ? "bg-green-500" : "bg-amber-500"}`}
         onClick={handleButtonClick}

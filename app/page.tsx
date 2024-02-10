@@ -7,13 +7,13 @@ export default function Home() {
     >
       <Link
         href="/Color-Sensor"
-        className="cursor-pointer w-80 flex justify-center rounded-full px-10 py-4 text-xl font-bold transition-all hover:-translate-y-1 bg-cyan-500"
+        className="cursor-pointer w-80 flex justify-center rounded-full px-10 py-4 text-xl font-bold transition-all hover:-translate-y-1 bg-cyan-500 whitespace-nowrap"
       >
         Lego Mario Color Sensor
       </Link>
       <Link
         href="/IMU-Sensor"
-        className="cursor-pointer w-80 flex justify-center rounded-full px-10 py-4 text-xl font-bold transition-all hover:-translate-y-1 bg-purple-500"
+        className="cursor-pointer w-80 flex justify-center rounded-full px-10 py-4 text-xl font-bold transition-all hover:-translate-y-1 bg-purple-500 whitespace-nowrap"
       >
         Lego Mario IMU Sensor
       </Link>
